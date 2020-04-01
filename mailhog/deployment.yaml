@@ -1,4 +1,5 @@
 apiVersion: apps/v1
+
 kind: Deployment
 metadata:
   labels:
@@ -15,9 +16,20 @@ spec:
         app: mailhog
     spec:
       priorityClassName: custom-priority
+      volumes:
+        - name: mailhog-maildir
+          persistentVolumeClaim: { claimName: pvc-mailhog }
       containers:
         - image: mailhog/mailhog
           name: mailhog
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /maildir
+              name: mailhog-maildir
+          command:
+            - "MailHog"
+            - "-storage=maildir"
+            - "-maildir-path=/maildir"
           readinessProbe:
             tcpSocket:
               port: 8025
