@@ -8,6 +8,8 @@ spec:
   selector:
     matchLabels:
       app: mariadb
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -25,3 +27,15 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mariadb-data
+          livenessProbe:
+            exec:
+              command:
+                - "sh"
+                - "-c"
+                - "mysqladmin status -p$MYSQL_ROOT_PASSWORD"
+          readinessProbe:
+            exec:
+              command:
+                - "sh"
+                - "-c"
+                - "mysqladmin status -p$MYSQL_ROOT_PASSWORD"
