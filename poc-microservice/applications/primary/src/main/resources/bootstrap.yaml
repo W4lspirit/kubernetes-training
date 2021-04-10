@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: "primary"
+
+server:
+  shutdown: graceful
+  compression:
+    enabled: true
+  http2:
+    enabled: true
+
+# Application configuration
+aggregation:
+  decimals: 2
+
