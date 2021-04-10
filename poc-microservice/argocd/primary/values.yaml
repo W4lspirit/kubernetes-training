@@ -41,17 +41,17 @@ service:
   port: 2021
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
   # kubernetes.io/ingress.class: istio
   # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
       paths:
-        - path: /
+        - path: /test
           backend:
             serviceName: primary
-            servicePort: 8080
+            servicePort: 2021
   tls: [ ]
   #  - secretName: chart-example-tls
   #    hosts:

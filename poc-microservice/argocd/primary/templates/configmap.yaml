@@ -5,5 +5,5 @@ metadata:
 data:
   application.yaml: |-
     aggregation:
-      decimals: 3
+      decimals: 4
 
