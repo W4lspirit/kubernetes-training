@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: "secondary"
+
+server:
+  shutdown: graceful
+  compression:
+    enabled: true
+  http2:
+    enabled: true
