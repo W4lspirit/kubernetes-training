@@ -46,9 +46,9 @@ ingress:
     kubernetes.io/ingress.class: istio
   # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: primary-example
+    - host: primary-example.wal
       paths:
-        - path: /
+        - path: /test
           backend:
             serviceName: primary
             servicePort: 80
