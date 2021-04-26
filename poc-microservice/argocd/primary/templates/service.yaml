@@ -1,9 +1,10 @@
+{{- if .Values.loadbalancer.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "primary.fullname" . }}
   labels:
-    {{- include "primary.labels" . | nindent 4 }}
+  {{- include "primary.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +13,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "primary.selectorLabels" . | nindent 4 }}
+  {{- include "primary.selectorLabels" . | nindent 4 }}
+  {{- end }}
