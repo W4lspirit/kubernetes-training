@@ -50,7 +50,7 @@ ingress:
         - path: /
           backend:
             serviceName: primary
-            servicePort: 80
+            servicePort: 8080
   tls: [ ]
   #  - secretName: chart-example-tls
   #    hosts:
