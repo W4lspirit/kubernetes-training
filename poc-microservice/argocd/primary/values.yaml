@@ -47,7 +47,7 @@ ingress:
   # kubernetes.io/tls-acme: "true"
   hosts:
     - paths:
-        - path: /
+        - path: /test
           backend:
             serviceName: primary
             servicePort: 8080
