@@ -6,7 +6,11 @@ metadata:
     {{- include "primary.labels" . | nindent 4 }}
     vault.hashicorp.com/agent-inject: "true"
     vault.hashicorp.com/role: "devweb-app"
-    vault.hashicorp.com/agent-inject-secret-credentials.txt: secret/data/devwebapp/config
+    vault.hashicorp.com/agent-inject-secret-config: 'secret/data/devwebapp/config'
+    vault.hashicorp.com/agent-inject-template-config: |
+      {{ with secret "secret/data/devwebapp/config" -}}
+        export C_DECIMALS="{{ .Data.data.decimals }}"
+      {{- end }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
