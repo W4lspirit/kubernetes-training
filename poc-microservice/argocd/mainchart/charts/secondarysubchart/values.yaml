@@ -46,6 +46,7 @@ ingress:
         - path: /secondary
           backend:
             serviceName: secondary
+            servicePort: 80
   tls: [ ]
   #  - secretName: chart-example-tls
   #    hosts:
