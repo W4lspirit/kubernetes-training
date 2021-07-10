@@ -35,4 +35,8 @@ public class AggregationController {
                 objects.getT3());
     }
 
+    @GetMapping(value = "/{location}/statistics")
+    private void a() {
+
+    }
 }
